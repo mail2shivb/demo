@@ -1,0 +1,5 @@
+com/example/demo/entity/Trade.class
+com/example/demo/DemoApplication.class
+com/example/demo/repository/TradeRepository.class
+com/example/demo/controller/TradeController.class
+com/example/demo/service/TradeService.class
