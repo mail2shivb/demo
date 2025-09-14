@@ -39,6 +39,7 @@ public class TradeMcpService {
                     trade.setSymbol(tradeDetails.getSymbol());
                     trade.setQuantity(tradeDetails.getQuantity());
                     trade.setPrice(tradeDetails.getPrice());
+                    trade.setExecutedAt(tradeDetails.getExecutedAt());
                     return tradeRepository.save(trade);
                 })
                 .orElse(null);

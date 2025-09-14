@@ -1,16 +1,13 @@
 spring:
   datasource:
-    url: jdbc:h2:file:./data/trades
-    driverClassName: org.h2.Driver
-    username: sa
-    password: ""
+    url: jdbc:postgresql://localhost:5432/trades
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: postgres
   jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: update
-  h2:
-    console:
-      enabled: true
 
   ai:
     mcp:
@@ -22,6 +19,9 @@ spring:
   main:
     web-application-type: none
     banner-mode: off
+  output:
+    ansi:
+      enabled: never
 logging:
   pattern:
     console:

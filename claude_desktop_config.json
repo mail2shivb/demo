@@ -4,7 +4,7 @@
       "command": "java",
       "args": [
         "-jar",
-        "/Users/SHIV/Downloads/trade-mcp-server-0.0.1-SNAPSHOT.jar"
+        "/Users/SHIV/work/Spring-AI/trade-mcp-server-0.0.1-SNAPSHOT.jar"
       ]
     }
   }

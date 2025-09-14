@@ -1,12 +1,12 @@
 # Spring Boot Trade CRUD Demo
 
-This project is a Spring Boot application with H2 in-memory database. It provides CRUD operations for a `Trade` entity
+This project is a Spring Boot application with PostgreSQL database. It provides CRUD operations for a `Trade` entity
 via REST API.
 
 ## Features
 
 - Spring Boot 3
-- H2 Database (in-memory)
+- PostgreSQL Database
 - JPA Entity: Trade
 - REST Controller for CRUD
 - Service layer for business logic
@@ -21,14 +21,21 @@ via REST API.
 
 ## How to Run
 
-1. Ensure you have Java 17+ and Maven installed.
-2. Run:
+1. Ensure you have Java 17+, Maven, and a running PostgreSQL instance.
+2. Create a database named `trades` in PostgreSQL:
+   ```bash
+   createdb -U postgres trades
+   ```
+   (You can change the username/password in `src/main/resources/application.yml` as needed.)
+3. Run:
    ```bash
    mvn spring-boot:run
    ```
-3. Access H2 Console at [http://localhost:8080/h2-console](http://localhost:8080/h2-console)
+4. docker run -d -p 5432:5432 -e POSTGRES_USER=postgres-e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=trades postgres 
+4. Access the API at `http://localhost:8080/api/trades`.
+4. The application will connect to PostgreSQL at `jdbc:postgresql://localhost:5432/trades` by default.
 
 ## Notes
 
-- The database is in-memory and resets on restart.
-- Replace sample data and endpoints as needed for your use case.
+- The database is persistent in PostgreSQL.
+- Update the datasource settings in `src/main/resources/application.yml` if your PostgreSQL instance uses different credentials or host/port.

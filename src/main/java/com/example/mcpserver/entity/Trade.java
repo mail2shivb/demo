@@ -6,6 +6,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Data;
 
+import java.time.Instant;
+
 @Entity
 @Data
 public class Trade {
@@ -15,4 +17,5 @@ public class Trade {
     private String symbol;
     private int quantity;
     private double price;
+    private Instant executedAt;
 }
