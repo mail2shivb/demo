@@ -1,0 +1,78 @@
+[project]
+name = "company-ref"
+version = "1.0.0"
+description = "Company Reference API (FastAPI + Azure Cosmos DB)"
+readme = "README.md"
+requires-python = ">=3.12"
+authors = [{ name = "Shiv Bathula" }]
+dependencies = [
+    "fastapi[standard]==0.115.0",
+    "uvicorn==0.32.0",
+    "pydantic==2.9.2",
+    "azure-cosmos==4.7.0",
+    "python-dotenv==1.0.1",
+    "gunicorn==23.0.0",
+]
+
+[project.urls]
+Homepage = "https://example.com"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.21.0",
+    "httpx>=0.25.0",
+    "pytest-cov>=4.0.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+asyncio_mode = "auto"
+addopts = [
+    "--strict-markers",
+    "--strict-config",
+    "--cov=app",
+    "--cov-report=term-missing",
+    "--cov-report=html:htmlcov",
+    "--cov-fail-under=80",
+    "-v",
+]
+markers = [
+    "unit: Unit tests",
+    "integration: Integration tests", 
+    "slow: Slow running tests",
+]
+
+[tool.coverage.run]
+source = ["app"]
+omit = [
+    "*/tests/*",
+    "*/__pycache__/*",
+    "*/venv/*",
+    "*/.venv/*",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "if self.debug:",
+    "if settings.DEBUG",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if 0:",
+    "if __name__ == .__main__.:",
+    "class .*\\bProtocol\\):",
+    "@(abc\\.)?abstractmethod",
+]
+
+[tool.uv]
+# Enable uv packaging for simple deploys
+package = true
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
