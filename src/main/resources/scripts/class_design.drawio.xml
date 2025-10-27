@@ -1,0 +1,21 @@
+<mxfile host="app.diagrams.net" modified="2025-10-27T00:00:00Z" agent="CorporateTakeoverDesign" version="21.6.8" type="device">
+  <diagram id="class-design-(fastapi-+-sqlmodel)" name="Class Design (FastAPI + SQLModel)">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1000" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/><mxCell id="1" parent="0"/>
+        
+<mxCell id="pkg" value="Packages" style="shape=swimlane;rounded=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1"><mxGeometry x="60" y="40" width="1680" height="880" as="geometry"/></mxCell>
+<mxCell id="models" value="models (SQLModel)&#10;Company, Status, Factor, Workflow, WorkflowFactor, AIResult, Citation, WorkflowCitation, WorkflowLog" style="shape=rectangle;rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="pkg"><mxGeometry x="20" y="40" width="360" height="220" as="geometry"/></mxCell>
+<mxCell id="repos" value="repository&#10;WorkflowRepo, FactorRepo, ResultRepo, CitationRepo, LogRepo" style="shape=rectangle;rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="pkg"><mxGeometry x="420" y="40" width="320" height="220" as="geometry"/></mxCell>
+<mxCell id="services" value="services&#10;WorkflowService, AnalysisService, StreamingService" style="shape=rectangle;rounded=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="pkg"><mxGeometry x="770" y="40" width="320" height="220" as="geometry"/></mxCell>
+<mxCell id="routers" value="routers (FastAPI)&#10;/workflows, /status, /results" style="shape=rectangle;rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="pkg"><mxGeometry x="1120" y="40" width="280" height="220" as="geometry"/></mxCell>
+<mxCell id="integrations" value="integrations&#10;NucleusClient, SearchClient, DB Session" style="shape=rectangle;rounded=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="pkg"><mxGeometry x="1440" y="40" width="220" height="220" as="geometry"/></mxCell>
+<mxCell id="r1" source="routers" target="services" edge="1" style="endArrow=block;strokeColor=#9673a6;"><mxGeometry relative="1" as="geometry"/></mxCell>
+<mxCell id="r2" source="services" target="repos" edge="1" style="endArrow=block;strokeColor=#d6b656;"><mxGeometry relative="1" as="geometry"/></mxCell>
+<mxCell id="r3" source="repos" target="models" edge="1" style="endArrow=block;strokeColor=#82b366;"><mxGeometry relative="1" as="geometry"/></mxCell>
+<mxCell id="r4" source="services" target="integrations" edge="1" style="endArrow=block;strokeColor=#d79b00;"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
