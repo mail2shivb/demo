@@ -1,0 +1,130 @@
+<?xml version="1.0" ?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900">
+  <g>
+    <rect x="40" y="40" width="260" height="182" fill="#ffffff" stroke="#333333" stroke-width="1.5"/>
+    <rect x="40" y="40" width="260" height="28" fill="#f0f4ff" stroke="#333333" stroke-width="1"/>
+    <text x="48" y="59" fill="#1f3a8a" style="font-family:Arial; font-size:14px; font-weight:bold">company</text>
+    <text x="48" y="86" fill="#111827" style="font-family:Consolas, monospace; font-size:12px">id: int PK</text>
+    <text x="48" y="104" fill="#111827" style="font-family:Consolas, monospace; font-size:12px">name: varchar(255) !</text>
+    <text x="48" y="122" fill="#111827" style="font-family:Consolas, monospace; font-size:12px">ticker: varchar(50)</text>
+    <text x="48" y="140" fill="#111827" style="font-family:Consolas, monospace; font-size:12px">isin: varchar(50)</text>
+    <text x="48" y="158" fill="#111827" style="font-family:Consolas, monospace; font-size:12px">lei: varchar(50)</text>
+    <text x="48" y="176" fill="#111827" style="font-family:Consolas, monospace; font-size:12px">country: varchar(100)</text>
+    <text x="48" y="194" fill="#111827" style="font-family:Consolas, monospace; font-size:12px">sector: varchar(100)</text>
+    <text x="48" y="212" fill="#111827" style="font-family:Consolas, monospace; font-size:12px">created_at: timestamptz</text>
+  </g>
+  <g>
+    <rect x="360" y="40" width="260" height="110" fill="#ffffff" stroke="#333333" stroke-width="1.5"/>
+    <rect x="360" y="40" width="260" height="28" fill="#f0f4ff" stroke="#333333" stroke-width="1"/>
+    <text x="368" y="59" fill="#1f3a8a" style="font-family:Arial; font-size:14px; font-weight:bold">app_user</text>
+    <text x="368" y="86" fill="#111827" style="font-family:Consolas, monospace; font-size:12px">id: int PK</text>
+    <text x="368" y="104" fill="#111827" style="font-family:Consolas, monospace; font-size:12px">username: varchar(100) UQ</text>
+    <text x="368" y="122" fill="#111827" style="font-family:Consolas, monospace; font-size:12px">display_name: varchar(150)</text>
+    <text x="368" y="140" fill="#111827" style="font-family:Consolas, monospace; font-size:12px">email: varchar(255)</text>
+  </g>
+  <g>
+    <rect x="700" y="40" width="260" height="74" fill="#ffffff" stroke="#333333" stroke-width="1.5"/>
+    <rect x="700" y="40" width="260" height="28" fill="#f0f4ff" stroke="#333333" stroke-width="1"/>
+    <text x="708" y="59" fill="#1f3a8a" style="font-family:Arial; font-size:14px; font-weight:bold">statuses</text>
+    <text x="708" y="86" fill="#111827" style="font-family:Consolas, monospace; font-size:12px">id: varchar(24) PK</text>
+    <text x="708" y="104" fill="#111827" style="font-family:Consolas, monospace; font-size:12px">name: varchar(80) UQ</text>
+  </g>
+  <g>
+    <rect x="1020" y="40" width="260" height="92" fill="#ffffff" stroke="#333333" stroke-width="1.5"/>
+    <rect x="1020" y="40" width="260" height="28" fill="#f0f4ff" stroke="#333333" stroke-width="1"/>
+    <text x="1028" y="59" fill="#1f3a8a" style="font-family:Arial; font-size:14px; font-weight:bold">factors</text>
+    <text x="1028" y="86" fill="#111827" style="font-family:Consolas, monospace; font-size:12px">id: varchar(24) PK</text>
+    <text x="1028" y="104" fill="#111827" style="font-family:Consolas, monospace; font-size:12px">name: varchar(120) UQ</text>
+    <text x="1028" y="122" fill="#111827" style="font-family:Consolas, monospace; font-size:12px">agent_id: varchar(64)</text>
+  </g>
+  <g>
+    <rect x="40" y="270" width="260" height="218" fill="#ffffff" stroke="#333333" stroke-width="1.5"/>
+    <rect x="40" y="270" width="260" height="28" fill="#f0f4ff" stroke="#333333" stroke-width="1"/>
+    <text x="48" y="289" fill="#1f3a8a" style="font-family:Arial; font-size:14px; font-weight:bold">workflows</text>
+    <text x="48" y="316" fill="#111827" style="font-family:Consolas, monospace; font-size:12px">id: uuidv7 PK</text>
+    <text x="48" y="334" fill="#111827" style="font-family:Consolas, monospace; font-size:12px">company_id: int FK→company</text>
+    <text x="48" y="352" fill="#111827" style="font-family:Consolas, monospace; font-size:12px">status_id: varchar FK→statuses</text>
+    <text x="48" y="370" fill="#111827" style="font-family:Consolas, monospace; font-size:12px">user_id: int FK→app_user</text>
+    <text x="48" y="388" fill="#111827" style="font-family:Consolas, monospace; font-size:12px">company: varchar(255)</text>
+    <text x="48" y="406" fill="#111827" style="font-family:Consolas, monospace; font-size:12px">created_at: timestamptz</text>
+    <text x="48" y="424" fill="#111827" style="font-family:Consolas, monospace; font-size:12px">updated_at: timestamptz</text>
+    <text x="48" y="442" fill="#111827" style="font-family:Consolas, monospace; font-size:12px">output: jsonb</text>
+    <text x="48" y="460" fill="#111827" style="font-family:Consolas, monospace; font-size:12px">consolidated_risk: jsonb</text>
+    <text x="48" y="478" fill="#111827" style="font-family:Consolas, monospace; font-size:12px">nucleus_job_id: varchar(100)</text>
+  </g>
+  <g>
+    <rect x="360" y="270" width="260" height="164" fill="#ffffff" stroke="#333333" stroke-width="1.5"/>
+    <rect x="360" y="270" width="260" height="28" fill="#f0f4ff" stroke="#333333" stroke-width="1"/>
+    <text x="368" y="289" fill="#1f3a8a" style="font-family:Arial; font-size:14px; font-weight:bold">workflows_factors</text>
+    <text x="368" y="316" fill="#111827" style="font-family:Consolas, monospace; font-size:12px">id: uuidv7 PK</text>
+    <text x="368" y="334" fill="#111827" style="font-family:Consolas, monospace; font-size:12px">workflow_id: uuidv7 FK→workflows</text>
+    <text x="368" y="352" fill="#111827" style="font-family:Consolas, monospace; font-size:12px">factor_id: varchar FK→factors</text>
+    <text x="368" y="370" fill="#111827" style="font-family:Consolas, monospace; font-size:12px">status_id: varchar FK→statuses</text>
+    <text x="368" y="388" fill="#111827" style="font-family:Consolas, monospace; font-size:12px">outcome: varchar(24)</text>
+    <text x="368" y="406" fill="#111827" style="font-family:Consolas, monospace; font-size:12px">rating: varchar(16)</text>
+    <text x="368" y="424" fill="#111827" style="font-family:Consolas, monospace; font-size:12px">commentary: text</text>
+  </g>
+  <g>
+    <rect x="700" y="270" width="260" height="182" fill="#ffffff" stroke="#333333" stroke-width="1.5"/>
+    <rect x="700" y="270" width="260" height="28" fill="#f0f4ff" stroke="#333333" stroke-width="1"/>
+    <text x="708" y="289" fill="#1f3a8a" style="font-family:Arial; font-size:14px; font-weight:bold">ai_result</text>
+    <text x="708" y="316" fill="#111827" style="font-family:Consolas, monospace; font-size:12px">id: bigserial PK</text>
+    <text x="708" y="334" fill="#111827" style="font-family:Consolas, monospace; font-size:12px">workflow_id: uuidv7 FK→workflows</text>
+    <text x="708" y="352" fill="#111827" style="font-family:Consolas, monospace; font-size:12px">factor_id: varchar FK→factors</text>
+    <text x="708" y="370" fill="#111827" style="font-family:Consolas, monospace; font-size:12px">nucleus_response: jsonb</text>
+    <text x="708" y="388" fill="#111827" style="font-family:Consolas, monospace; font-size:12px">extracted_summary: text</text>
+    <text x="708" y="406" fill="#111827" style="font-family:Consolas, monospace; font-size:12px">rating: varchar(16)</text>
+    <text x="708" y="424" fill="#111827" style="font-family:Consolas, monospace; font-size:12px">citations_count: int</text>
+    <text x="708" y="442" fill="#111827" style="font-family:Consolas, monospace; font-size:12px">created_at: timestamptz</text>
+  </g>
+  <g>
+    <rect x="1020" y="270" width="260" height="164" fill="#ffffff" stroke="#333333" stroke-width="1.5"/>
+    <rect x="1020" y="270" width="260" height="28" fill="#f0f4ff" stroke="#333333" stroke-width="1"/>
+    <text x="1028" y="289" fill="#1f3a8a" style="font-family:Arial; font-size:14px; font-weight:bold">citations</text>
+    <text x="1028" y="316" fill="#111827" style="font-family:Consolas, monospace; font-size:12px">id: bigserial PK</text>
+    <text x="1028" y="334" fill="#111827" style="font-family:Consolas, monospace; font-size:12px">type: varchar(16)  -- link/pdf/html</text>
+    <text x="1028" y="352" fill="#111827" style="font-family:Consolas, monospace; font-size:12px">source: varchar(80)</text>
+    <text x="1028" y="370" fill="#111827" style="font-family:Consolas, monospace; font-size:12px">title: text</text>
+    <text x="1028" y="388" fill="#111827" style="font-family:Consolas, monospace; font-size:12px">url: text</text>
+    <text x="1028" y="406" fill="#111827" style="font-family:Consolas, monospace; font-size:12px">published_at: timestamptz</text>
+    <text x="1028" y="424" fill="#111827" style="font-family:Consolas, monospace; font-size:12px">snippet: text</text>
+  </g>
+  <g>
+    <rect x="360" y="540" width="260" height="92" fill="#ffffff" stroke="#333333" stroke-width="1.5"/>
+    <rect x="360" y="540" width="260" height="28" fill="#f0f4ff" stroke="#333333" stroke-width="1"/>
+    <text x="368" y="559" fill="#1f3a8a" style="font-family:Arial; font-size:14px; font-weight:bold">workflow_citations</text>
+    <text x="368" y="586" fill="#111827" style="font-family:Consolas, monospace; font-size:12px">id: bigserial PK</text>
+    <text x="368" y="604" fill="#111827" style="font-family:Consolas, monospace; font-size:12px">workflow_factor_id: uuidv7 FK→workflows_factors</text>
+    <text x="368" y="622" fill="#111827" style="font-family:Consolas, monospace; font-size:12px">citation_id: bigint FK→citations</text>
+  </g>
+  <g>
+    <rect x="700" y="540" width="260" height="128" fill="#ffffff" stroke="#333333" stroke-width="1.5"/>
+    <rect x="700" y="540" width="260" height="28" fill="#f0f4ff" stroke="#333333" stroke-width="1"/>
+    <text x="708" y="559" fill="#1f3a8a" style="font-family:Arial; font-size:14px; font-weight:bold">workflow_logs</text>
+    <text x="708" y="586" fill="#111827" style="font-family:Consolas, monospace; font-size:12px">id: bigserial PK</text>
+    <text x="708" y="604" fill="#111827" style="font-family:Consolas, monospace; font-size:12px">workflow_id: uuidv7 FK→workflows</text>
+    <text x="708" y="622" fill="#111827" style="font-family:Consolas, monospace; font-size:12px">name: varchar(80)</text>
+    <text x="708" y="640" fill="#111827" style="font-family:Consolas, monospace; font-size:12px">message: text</text>
+    <text x="708" y="658" fill="#111827" style="font-family:Consolas, monospace; font-size:12px">timestamp: timestamptz</text>
+  </g>
+  <line x1="300" y1="330" x2="360" y2="330" stroke="#6b7280" stroke-width="1.2"/>
+  <polygon points="360,330 354,326 354,334" fill="#6b7280"/>
+  <line x1="300" y1="360" x2="360" y2="360" stroke="#6b7280" stroke-width="1.2"/>
+  <polygon points="360,360 354,356 354,364" fill="#6b7280"/>
+  <line x1="300" y1="380" x2="700" y2="580" stroke="#6b7280" stroke-width="1.2"/>
+  <polygon points="700,580 694,576 694,584" fill="#6b7280"/>
+  <line x1="620" y1="330" x2="700" y2="330" stroke="#6b7280" stroke-width="1.2"/>
+  <polygon points="700,330 694,326 694,334" fill="#6b7280"/>
+  <line x1="940" y1="600" x2="1020" y2="600" stroke="#6b7280" stroke-width="1.2"/>
+  <polygon points="1020,600 1014,596 1014,604" fill="#6b7280"/>
+  <line x1="300" y1="300" x2="40" y2="150" stroke="#6b7280" stroke-width="1.2"/>
+  <polygon points="40,150 34,146 34,154" fill="#6b7280"/>
+  <line x1="300" y1="315" x2="700" y2="120" stroke="#6b7280" stroke-width="1.2"/>
+  <polygon points="700,120 694,116 694,124" fill="#6b7280"/>
+  <line x1="300" y1="345" x2="360" y2="120" stroke="#6b7280" stroke-width="1.2"/>
+  <polygon points="360,120 354,116 354,124" fill="#6b7280"/>
+  <line x1="620" y1="360" x2="1020" y2="120" stroke="#6b7280" stroke-width="1.2"/>
+  <polygon points="1020,120 1014,116 1014,124" fill="#6b7280"/>
+  <line x1="620" y1="380" x2="700" y2="120" stroke="#6b7280" stroke-width="1.2"/>
+  <polygon points="700,120 694,116 694,124" fill="#6b7280"/>
+</svg>
