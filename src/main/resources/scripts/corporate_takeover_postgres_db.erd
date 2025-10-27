@@ -1,0 +1,1514 @@
+{
+  "$schema": "https://raw.githubusercontent.com/dineug/erd-editor/main/json-schema/schema.json",
+  "version": "3.0.0",
+  "settings": {
+    "width": 4000,
+    "height": 2200,
+    "scrollTop": 0,
+    "scrollLeft": 0,
+    "zoomLevel": 0.8,
+    "show": 295,
+    "database": 16,
+    "databaseName": "PostgreSQL",
+    "canvasType": "ERD",
+    "tableNameCase": 1,
+    "columnNameCase": 1,
+    "bracketType": 2,
+    "relationshipDataTypeSync": true,
+    "relationshipOptimization": true,
+    "columnOrder": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      32,
+      64
+    ],
+    "maxWidthComment": 280,
+    "ignoreSaveSettings": 3
+  },
+  "doc": {
+    "tableIds": [
+      "t:company",
+      "t:app_user",
+      "t:statuses",
+      "t:factors",
+      "t:workflows",
+      "t:workflows_factors",
+      "t:ai_result",
+      "t:citations",
+      "t:workflow_citations",
+      "t:workflow_logs"
+    ],
+    "relationshipIds": [
+      "r:workflows_company",
+      "r:workflows_user",
+      "r:workflows_status",
+      "r:wfactors_workflows",
+      "r:wfactors_factors",
+      "r:ai_workflows",
+      "r:ai_factors",
+      "r:wcite_wfactors",
+      "r:wcite_citations",
+      "r:wlogs_workflows"
+    ],
+    "indexIds": [
+      "ix:uq_app_user_username",
+      "ix:uq_statuses_name",
+      "ix:uq_factors_name",
+      "ix:uq_citations_url",
+      "ix:idx_workflows_company_created",
+      "ix:idx_wfactors_workflow",
+      "ix:idx_wlogs_workflow_ts"
+    ],
+    "memoIds": []
+  },
+  "collections": {
+    "tableEntities": {
+      "t:company": {
+        "id": "t:company",
+        "name": "company",
+        "comment": "Reference companies",
+        "columnIds": [
+          "c:company:id",
+          "c:company:name",
+          "c:company:ticker",
+          "c:company:isin",
+          "c:company:lei"
+        ],
+        "seqColumnIds": [
+          "c:company:id",
+          "c:company:name",
+          "c:company:ticker",
+          "c:company:isin",
+          "c:company:lei"
+        ],
+        "ui": {
+          "x": 120,
+          "y": 160,
+          "zIndex": 1,
+          "widthName": 220,
+          "widthComment": 260,
+          "color": ""
+        }
+      },
+      "t:app_user": {
+        "id": "t:app_user",
+        "name": "app_user",
+        "comment": "Application users",
+        "columnIds": [
+          "c:app_user:id",
+          "c:app_user:username",
+          "c:app_user:email"
+        ],
+        "seqColumnIds": [
+          "c:app_user:id",
+          "c:app_user:username",
+          "c:app_user:email"
+        ],
+        "ui": {
+          "x": 520,
+          "y": 160,
+          "zIndex": 1,
+          "widthName": 220,
+          "widthComment": 260,
+          "color": ""
+        }
+      },
+      "t:statuses": {
+        "id": "t:statuses",
+        "name": "statuses",
+        "comment": "Workflow statuses",
+        "columnIds": [
+          "c:statuses:id",
+          "c:statuses:name"
+        ],
+        "seqColumnIds": [
+          "c:statuses:id",
+          "c:statuses:name"
+        ],
+        "ui": {
+          "x": 900,
+          "y": 160,
+          "zIndex": 1,
+          "widthName": 220,
+          "widthComment": 260,
+          "color": ""
+        }
+      },
+      "t:factors": {
+        "id": "t:factors",
+        "name": "factors",
+        "comment": "Analytical factors",
+        "columnIds": [
+          "c:factors:id",
+          "c:factors:name",
+          "c:factors:description"
+        ],
+        "seqColumnIds": [
+          "c:factors:id",
+          "c:factors:name",
+          "c:factors:description"
+        ],
+        "ui": {
+          "x": 1260,
+          "y": 160,
+          "zIndex": 1,
+          "widthName": 220,
+          "widthComment": 260,
+          "color": ""
+        }
+      },
+      "t:workflows": {
+        "id": "t:workflows",
+        "name": "workflows",
+        "comment": "Workflow executions",
+        "columnIds": [
+          "c:workflows:id",
+          "c:workflows:company_id",
+          "c:workflows:user_id",
+          "c:workflows:status_id",
+          "c:workflows:output",
+          "c:workflows:consolidated_risk",
+          "c:workflows:created_at"
+        ],
+        "seqColumnIds": [
+          "c:workflows:id",
+          "c:workflows:company_id",
+          "c:workflows:user_id",
+          "c:workflows:status_id",
+          "c:workflows:output",
+          "c:workflows:consolidated_risk",
+          "c:workflows:created_at"
+        ],
+        "ui": {
+          "x": 120,
+          "y": 520,
+          "zIndex": 1,
+          "widthName": 220,
+          "widthComment": 260,
+          "color": ""
+        }
+      },
+      "t:workflows_factors": {
+        "id": "t:workflows_factors",
+        "name": "workflows_factors",
+        "comment": "Factors evaluated per workflow",
+        "columnIds": [
+          "c:workflows_factors:id",
+          "c:workflows_factors:workflow_id",
+          "c:workflows_factors:factor_id",
+          "c:workflows_factors:status_id",
+          "c:workflows_factors:outcome",
+          "c:workflows_factors:rating",
+          "c:workflows_factors:commentary"
+        ],
+        "seqColumnIds": [
+          "c:workflows_factors:id",
+          "c:workflows_factors:workflow_id",
+          "c:workflows_factors:factor_id",
+          "c:workflows_factors:status_id",
+          "c:workflows_factors:outcome",
+          "c:workflows_factors:rating",
+          "c:workflows_factors:commentary"
+        ],
+        "ui": {
+          "x": 560,
+          "y": 560,
+          "zIndex": 1,
+          "widthName": 220,
+          "widthComment": 260,
+          "color": ""
+        }
+      },
+      "t:ai_result": {
+        "id": "t:ai_result",
+        "name": "ai_result",
+        "comment": "Nucleus model outputs per factor",
+        "columnIds": [
+          "c:ai_result:id",
+          "c:ai_result:workflow_id",
+          "c:ai_result:factor_id",
+          "c:ai_result:nucleus_response",
+          "c:ai_result:extracted_summary",
+          "c:ai_result:rating",
+          "c:ai_result:citations_count"
+        ],
+        "seqColumnIds": [
+          "c:ai_result:id",
+          "c:ai_result:workflow_id",
+          "c:ai_result:factor_id",
+          "c:ai_result:nucleus_response",
+          "c:ai_result:extracted_summary",
+          "c:ai_result:rating",
+          "c:ai_result:citations_count"
+        ],
+        "ui": {
+          "x": 1000,
+          "y": 600,
+          "zIndex": 1,
+          "widthName": 220,
+          "widthComment": 260,
+          "color": ""
+        }
+      },
+      "t:citations": {
+        "id": "t:citations",
+        "name": "citations",
+        "comment": "Sources & references",
+        "columnIds": [
+          "c:citations:id",
+          "c:citations:type",
+          "c:citations:source",
+          "c:citations:url",
+          "c:citations:title",
+          "c:citations:published_at",
+          "c:citations:snippet"
+        ],
+        "seqColumnIds": [
+          "c:citations:id",
+          "c:citations:type",
+          "c:citations:source",
+          "c:citations:url",
+          "c:citations:title",
+          "c:citations:published_at",
+          "c:citations:snippet"
+        ],
+        "ui": {
+          "x": 120,
+          "y": 980,
+          "zIndex": 1,
+          "widthName": 220,
+          "widthComment": 260,
+          "color": ""
+        }
+      },
+      "t:workflow_citations": {
+        "id": "t:workflow_citations",
+        "name": "workflow_citations",
+        "comment": "Citations attached to workflow factors",
+        "columnIds": [
+          "c:workflow_citations:id",
+          "c:workflow_citations:workflow_factor_id",
+          "c:workflow_citations:citation_id"
+        ],
+        "seqColumnIds": [
+          "c:workflow_citations:id",
+          "c:workflow_citations:workflow_factor_id",
+          "c:workflow_citations:citation_id"
+        ],
+        "ui": {
+          "x": 560,
+          "y": 1020,
+          "zIndex": 1,
+          "widthName": 220,
+          "widthComment": 260,
+          "color": ""
+        }
+      },
+      "t:workflow_logs": {
+        "id": "t:workflow_logs",
+        "name": "workflow_logs",
+        "comment": "Execution logs",
+        "columnIds": [
+          "c:workflow_logs:id",
+          "c:workflow_logs:workflow_id",
+          "c:workflow_logs:name",
+          "c:workflow_logs:message",
+          "c:workflow_logs:timestamp"
+        ],
+        "seqColumnIds": [
+          "c:workflow_logs:id",
+          "c:workflow_logs:workflow_id",
+          "c:workflow_logs:name",
+          "c:workflow_logs:message",
+          "c:workflow_logs:timestamp"
+        ],
+        "ui": {
+          "x": 1000,
+          "y": 1020,
+          "zIndex": 1,
+          "widthName": 220,
+          "widthComment": 260,
+          "color": ""
+        }
+      }
+    },
+    "tableColumnEntities": {
+      "c:company:id": {
+        "id": "c:company:id",
+        "tableId": "t:company",
+        "name": "id",
+        "comment": "PK",
+        "dataType": "SERIAL",
+        "default": "",
+        "options": 11,
+        "ui": {
+          "keys": 1,
+          "widthName": 220,
+          "widthComment": 260,
+          "widthDataType": 200,
+          "widthDefault": 160
+        }
+      },
+      "c:company:name": {
+        "id": "c:company:name",
+        "tableId": "t:company",
+        "name": "name",
+        "comment": "",
+        "dataType": "VARCHAR(255)",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 0,
+          "widthName": 220,
+          "widthComment": 260,
+          "widthDataType": 200,
+          "widthDefault": 160
+        }
+      },
+      "c:company:ticker": {
+        "id": "c:company:ticker",
+        "tableId": "t:company",
+        "name": "ticker",
+        "comment": "",
+        "dataType": "VARCHAR(20)",
+        "default": "",
+        "options": 0,
+        "ui": {
+          "keys": 0,
+          "widthName": 220,
+          "widthComment": 260,
+          "widthDataType": 200,
+          "widthDefault": 160
+        }
+      },
+      "c:company:isin": {
+        "id": "c:company:isin",
+        "tableId": "t:company",
+        "name": "isin",
+        "comment": "",
+        "dataType": "VARCHAR(20)",
+        "default": "",
+        "options": 0,
+        "ui": {
+          "keys": 0,
+          "widthName": 220,
+          "widthComment": 260,
+          "widthDataType": 200,
+          "widthDefault": 160
+        }
+      },
+      "c:company:lei": {
+        "id": "c:company:lei",
+        "tableId": "t:company",
+        "name": "lei",
+        "comment": "",
+        "dataType": "VARCHAR(20)",
+        "default": "",
+        "options": 0,
+        "ui": {
+          "keys": 0,
+          "widthName": 220,
+          "widthComment": 260,
+          "widthDataType": 200,
+          "widthDefault": 160
+        }
+      },
+      "c:app_user:id": {
+        "id": "c:app_user:id",
+        "tableId": "t:app_user",
+        "name": "id",
+        "comment": "PK",
+        "dataType": "SERIAL",
+        "default": "",
+        "options": 11,
+        "ui": {
+          "keys": 1,
+          "widthName": 220,
+          "widthComment": 260,
+          "widthDataType": 200,
+          "widthDefault": 160
+        }
+      },
+      "c:app_user:username": {
+        "id": "c:app_user:username",
+        "tableId": "t:app_user",
+        "name": "username",
+        "comment": "UQ",
+        "dataType": "VARCHAR(100)",
+        "default": "",
+        "options": 12,
+        "ui": {
+          "keys": 0,
+          "widthName": 220,
+          "widthComment": 260,
+          "widthDataType": 200,
+          "widthDefault": 160
+        }
+      },
+      "c:app_user:email": {
+        "id": "c:app_user:email",
+        "tableId": "t:app_user",
+        "name": "email",
+        "comment": "",
+        "dataType": "VARCHAR(200)",
+        "default": "",
+        "options": 0,
+        "ui": {
+          "keys": 0,
+          "widthName": 220,
+          "widthComment": 260,
+          "widthDataType": 200,
+          "widthDefault": 160
+        }
+      },
+      "c:statuses:id": {
+        "id": "c:statuses:id",
+        "tableId": "t:statuses",
+        "name": "id",
+        "comment": "PK",
+        "dataType": "VARCHAR(20)",
+        "default": "",
+        "options": 10,
+        "ui": {
+          "keys": 1,
+          "widthName": 220,
+          "widthComment": 260,
+          "widthDataType": 200,
+          "widthDefault": 160
+        }
+      },
+      "c:statuses:name": {
+        "id": "c:statuses:name",
+        "tableId": "t:statuses",
+        "name": "name",
+        "comment": "UQ",
+        "dataType": "VARCHAR(100)",
+        "default": "",
+        "options": 12,
+        "ui": {
+          "keys": 0,
+          "widthName": 220,
+          "widthComment": 260,
+          "widthDataType": 200,
+          "widthDefault": 160
+        }
+      },
+      "c:factors:id": {
+        "id": "c:factors:id",
+        "tableId": "t:factors",
+        "name": "id",
+        "comment": "PK",
+        "dataType": "VARCHAR(20)",
+        "default": "",
+        "options": 10,
+        "ui": {
+          "keys": 1,
+          "widthName": 220,
+          "widthComment": 260,
+          "widthDataType": 200,
+          "widthDefault": 160
+        }
+      },
+      "c:factors:name": {
+        "id": "c:factors:name",
+        "tableId": "t:factors",
+        "name": "name",
+        "comment": "UQ",
+        "dataType": "VARCHAR(200)",
+        "default": "",
+        "options": 12,
+        "ui": {
+          "keys": 0,
+          "widthName": 220,
+          "widthComment": 260,
+          "widthDataType": 200,
+          "widthDefault": 160
+        }
+      },
+      "c:factors:description": {
+        "id": "c:factors:description",
+        "tableId": "t:factors",
+        "name": "description",
+        "comment": "",
+        "dataType": "TEXT",
+        "default": "",
+        "options": 0,
+        "ui": {
+          "keys": 0,
+          "widthName": 220,
+          "widthComment": 260,
+          "widthDataType": 200,
+          "widthDefault": 160
+        }
+      },
+      "c:workflows:id": {
+        "id": "c:workflows:id",
+        "tableId": "t:workflows",
+        "name": "id",
+        "comment": "PK",
+        "dataType": "UUID",
+        "default": "",
+        "options": 10,
+        "ui": {
+          "keys": 1,
+          "widthName": 220,
+          "widthComment": 260,
+          "widthDataType": 200,
+          "widthDefault": 160
+        }
+      },
+      "c:workflows:company_id": {
+        "id": "c:workflows:company_id",
+        "tableId": "t:workflows",
+        "name": "company_id",
+        "comment": "FK \u2192 company.id",
+        "dataType": "INT",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 2,
+          "widthName": 220,
+          "widthComment": 260,
+          "widthDataType": 200,
+          "widthDefault": 160
+        }
+      },
+      "c:workflows:user_id": {
+        "id": "c:workflows:user_id",
+        "tableId": "t:workflows",
+        "name": "user_id",
+        "comment": "FK \u2192 app_user.id",
+        "dataType": "INT",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 2,
+          "widthName": 220,
+          "widthComment": 260,
+          "widthDataType": 200,
+          "widthDefault": 160
+        }
+      },
+      "c:workflows:status_id": {
+        "id": "c:workflows:status_id",
+        "tableId": "t:workflows",
+        "name": "status_id",
+        "comment": "FK \u2192 statuses.id",
+        "dataType": "VARCHAR(20)",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 2,
+          "widthName": 220,
+          "widthComment": 260,
+          "widthDataType": 200,
+          "widthDefault": 160
+        }
+      },
+      "c:workflows:output": {
+        "id": "c:workflows:output",
+        "tableId": "t:workflows",
+        "name": "output",
+        "comment": "",
+        "dataType": "JSONB",
+        "default": "",
+        "options": 0,
+        "ui": {
+          "keys": 0,
+          "widthName": 220,
+          "widthComment": 260,
+          "widthDataType": 200,
+          "widthDefault": 160
+        }
+      },
+      "c:workflows:consolidated_risk": {
+        "id": "c:workflows:consolidated_risk",
+        "tableId": "t:workflows",
+        "name": "consolidated_risk",
+        "comment": "",
+        "dataType": "JSONB",
+        "default": "",
+        "options": 0,
+        "ui": {
+          "keys": 0,
+          "widthName": 220,
+          "widthComment": 260,
+          "widthDataType": 200,
+          "widthDefault": 160
+        }
+      },
+      "c:workflows:created_at": {
+        "id": "c:workflows:created_at",
+        "tableId": "t:workflows",
+        "name": "created_at",
+        "comment": "",
+        "dataType": "TIMESTAMP",
+        "default": "",
+        "options": 0,
+        "ui": {
+          "keys": 0,
+          "widthName": 220,
+          "widthComment": 260,
+          "widthDataType": 200,
+          "widthDefault": 160
+        }
+      },
+      "c:workflows_factors:id": {
+        "id": "c:workflows_factors:id",
+        "tableId": "t:workflows_factors",
+        "name": "id",
+        "comment": "PK",
+        "dataType": "UUID",
+        "default": "",
+        "options": 10,
+        "ui": {
+          "keys": 1,
+          "widthName": 220,
+          "widthComment": 260,
+          "widthDataType": 200,
+          "widthDefault": 160
+        }
+      },
+      "c:workflows_factors:workflow_id": {
+        "id": "c:workflows_factors:workflow_id",
+        "tableId": "t:workflows_factors",
+        "name": "workflow_id",
+        "comment": "FK \u2192 workflows.id",
+        "dataType": "UUID",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 2,
+          "widthName": 220,
+          "widthComment": 260,
+          "widthDataType": 200,
+          "widthDefault": 160
+        }
+      },
+      "c:workflows_factors:factor_id": {
+        "id": "c:workflows_factors:factor_id",
+        "tableId": "t:workflows_factors",
+        "name": "factor_id",
+        "comment": "FK \u2192 factors.id",
+        "dataType": "VARCHAR(20)",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 2,
+          "widthName": 220,
+          "widthComment": 260,
+          "widthDataType": 200,
+          "widthDefault": 160
+        }
+      },
+      "c:workflows_factors:status_id": {
+        "id": "c:workflows_factors:status_id",
+        "tableId": "t:workflows_factors",
+        "name": "status_id",
+        "comment": "FK \u2192 statuses.id",
+        "dataType": "VARCHAR(20)",
+        "default": "",
+        "options": 0,
+        "ui": {
+          "keys": 2,
+          "widthName": 220,
+          "widthComment": 260,
+          "widthDataType": 200,
+          "widthDefault": 160
+        }
+      },
+      "c:workflows_factors:outcome": {
+        "id": "c:workflows_factors:outcome",
+        "tableId": "t:workflows_factors",
+        "name": "outcome",
+        "comment": "",
+        "dataType": "TEXT",
+        "default": "",
+        "options": 0,
+        "ui": {
+          "keys": 0,
+          "widthName": 220,
+          "widthComment": 260,
+          "widthDataType": 200,
+          "widthDefault": 160
+        }
+      },
+      "c:workflows_factors:rating": {
+        "id": "c:workflows_factors:rating",
+        "tableId": "t:workflows_factors",
+        "name": "rating",
+        "comment": "",
+        "dataType": "NUMERIC(3,2)",
+        "default": "",
+        "options": 0,
+        "ui": {
+          "keys": 0,
+          "widthName": 220,
+          "widthComment": 260,
+          "widthDataType": 200,
+          "widthDefault": 160
+        }
+      },
+      "c:workflows_factors:commentary": {
+        "id": "c:workflows_factors:commentary",
+        "tableId": "t:workflows_factors",
+        "name": "commentary",
+        "comment": "",
+        "dataType": "TEXT",
+        "default": "",
+        "options": 0,
+        "ui": {
+          "keys": 0,
+          "widthName": 220,
+          "widthComment": 260,
+          "widthDataType": 200,
+          "widthDefault": 160
+        }
+      },
+      "c:ai_result:id": {
+        "id": "c:ai_result:id",
+        "tableId": "t:ai_result",
+        "name": "id",
+        "comment": "PK",
+        "dataType": "BIGSERIAL",
+        "default": "",
+        "options": 11,
+        "ui": {
+          "keys": 1,
+          "widthName": 220,
+          "widthComment": 260,
+          "widthDataType": 200,
+          "widthDefault": 160
+        }
+      },
+      "c:ai_result:workflow_id": {
+        "id": "c:ai_result:workflow_id",
+        "tableId": "t:ai_result",
+        "name": "workflow_id",
+        "comment": "FK \u2192 workflows.id",
+        "dataType": "UUID",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 2,
+          "widthName": 220,
+          "widthComment": 260,
+          "widthDataType": 200,
+          "widthDefault": 160
+        }
+      },
+      "c:ai_result:factor_id": {
+        "id": "c:ai_result:factor_id",
+        "tableId": "t:ai_result",
+        "name": "factor_id",
+        "comment": "FK \u2192 factors.id",
+        "dataType": "VARCHAR(20)",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 2,
+          "widthName": 220,
+          "widthComment": 260,
+          "widthDataType": 200,
+          "widthDefault": 160
+        }
+      },
+      "c:ai_result:nucleus_response": {
+        "id": "c:ai_result:nucleus_response",
+        "tableId": "t:ai_result",
+        "name": "nucleus_response",
+        "comment": "",
+        "dataType": "JSONB",
+        "default": "",
+        "options": 0,
+        "ui": {
+          "keys": 0,
+          "widthName": 220,
+          "widthComment": 260,
+          "widthDataType": 200,
+          "widthDefault": 160
+        }
+      },
+      "c:ai_result:extracted_summary": {
+        "id": "c:ai_result:extracted_summary",
+        "tableId": "t:ai_result",
+        "name": "extracted_summary",
+        "comment": "",
+        "dataType": "TEXT",
+        "default": "",
+        "options": 0,
+        "ui": {
+          "keys": 0,
+          "widthName": 220,
+          "widthComment": 260,
+          "widthDataType": 200,
+          "widthDefault": 160
+        }
+      },
+      "c:ai_result:rating": {
+        "id": "c:ai_result:rating",
+        "tableId": "t:ai_result",
+        "name": "rating",
+        "comment": "",
+        "dataType": "NUMERIC(3,2)",
+        "default": "",
+        "options": 0,
+        "ui": {
+          "keys": 0,
+          "widthName": 220,
+          "widthComment": 260,
+          "widthDataType": 200,
+          "widthDefault": 160
+        }
+      },
+      "c:ai_result:citations_count": {
+        "id": "c:ai_result:citations_count",
+        "tableId": "t:ai_result",
+        "name": "citations_count",
+        "comment": "",
+        "dataType": "INT",
+        "default": "",
+        "options": 0,
+        "ui": {
+          "keys": 0,
+          "widthName": 220,
+          "widthComment": 260,
+          "widthDataType": 200,
+          "widthDefault": 160
+        }
+      },
+      "c:citations:id": {
+        "id": "c:citations:id",
+        "tableId": "t:citations",
+        "name": "id",
+        "comment": "PK",
+        "dataType": "BIGSERIAL",
+        "default": "",
+        "options": 11,
+        "ui": {
+          "keys": 1,
+          "widthName": 220,
+          "widthComment": 260,
+          "widthDataType": 200,
+          "widthDefault": 160
+        }
+      },
+      "c:citations:type": {
+        "id": "c:citations:type",
+        "tableId": "t:citations",
+        "name": "type",
+        "comment": "",
+        "dataType": "VARCHAR(50)",
+        "default": "",
+        "options": 0,
+        "ui": {
+          "keys": 0,
+          "widthName": 220,
+          "widthComment": 260,
+          "widthDataType": 200,
+          "widthDefault": 160
+        }
+      },
+      "c:citations:source": {
+        "id": "c:citations:source",
+        "tableId": "t:citations",
+        "name": "source",
+        "comment": "",
+        "dataType": "VARCHAR(100)",
+        "default": "",
+        "options": 0,
+        "ui": {
+          "keys": 0,
+          "widthName": 220,
+          "widthComment": 260,
+          "widthDataType": 200,
+          "widthDefault": 160
+        }
+      },
+      "c:citations:url": {
+        "id": "c:citations:url",
+        "tableId": "t:citations",
+        "name": "url",
+        "comment": "UQ",
+        "dataType": "TEXT",
+        "default": "",
+        "options": 4,
+        "ui": {
+          "keys": 0,
+          "widthName": 220,
+          "widthComment": 260,
+          "widthDataType": 200,
+          "widthDefault": 160
+        }
+      },
+      "c:citations:title": {
+        "id": "c:citations:title",
+        "tableId": "t:citations",
+        "name": "title",
+        "comment": "",
+        "dataType": "TEXT",
+        "default": "",
+        "options": 0,
+        "ui": {
+          "keys": 0,
+          "widthName": 220,
+          "widthComment": 260,
+          "widthDataType": 200,
+          "widthDefault": 160
+        }
+      },
+      "c:citations:published_at": {
+        "id": "c:citations:published_at",
+        "tableId": "t:citations",
+        "name": "published_at",
+        "comment": "",
+        "dataType": "TIMESTAMP",
+        "default": "",
+        "options": 0,
+        "ui": {
+          "keys": 0,
+          "widthName": 220,
+          "widthComment": 260,
+          "widthDataType": 200,
+          "widthDefault": 160
+        }
+      },
+      "c:citations:snippet": {
+        "id": "c:citations:snippet",
+        "tableId": "t:citations",
+        "name": "snippet",
+        "comment": "",
+        "dataType": "TEXT",
+        "default": "",
+        "options": 0,
+        "ui": {
+          "keys": 0,
+          "widthName": 220,
+          "widthComment": 260,
+          "widthDataType": 200,
+          "widthDefault": 160
+        }
+      },
+      "c:workflow_citations:id": {
+        "id": "c:workflow_citations:id",
+        "tableId": "t:workflow_citations",
+        "name": "id",
+        "comment": "PK",
+        "dataType": "BIGSERIAL",
+        "default": "",
+        "options": 11,
+        "ui": {
+          "keys": 1,
+          "widthName": 220,
+          "widthComment": 260,
+          "widthDataType": 200,
+          "widthDefault": 160
+        }
+      },
+      "c:workflow_citations:workflow_factor_id": {
+        "id": "c:workflow_citations:workflow_factor_id",
+        "tableId": "t:workflow_citations",
+        "name": "workflow_factor_id",
+        "comment": "FK \u2192 workflows_factors.id",
+        "dataType": "UUID",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 2,
+          "widthName": 220,
+          "widthComment": 260,
+          "widthDataType": 200,
+          "widthDefault": 160
+        }
+      },
+      "c:workflow_citations:citation_id": {
+        "id": "c:workflow_citations:citation_id",
+        "tableId": "t:workflow_citations",
+        "name": "citation_id",
+        "comment": "FK \u2192 citations.id",
+        "dataType": "BIGINT",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 2,
+          "widthName": 220,
+          "widthComment": 260,
+          "widthDataType": 200,
+          "widthDefault": 160
+        }
+      },
+      "c:workflow_logs:id": {
+        "id": "c:workflow_logs:id",
+        "tableId": "t:workflow_logs",
+        "name": "id",
+        "comment": "PK",
+        "dataType": "BIGSERIAL",
+        "default": "",
+        "options": 11,
+        "ui": {
+          "keys": 1,
+          "widthName": 220,
+          "widthComment": 260,
+          "widthDataType": 200,
+          "widthDefault": 160
+        }
+      },
+      "c:workflow_logs:workflow_id": {
+        "id": "c:workflow_logs:workflow_id",
+        "tableId": "t:workflow_logs",
+        "name": "workflow_id",
+        "comment": "FK \u2192 workflows.id",
+        "dataType": "UUID",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 2,
+          "widthName": 220,
+          "widthComment": 260,
+          "widthDataType": 200,
+          "widthDefault": 160
+        }
+      },
+      "c:workflow_logs:name": {
+        "id": "c:workflow_logs:name",
+        "tableId": "t:workflow_logs",
+        "name": "name",
+        "comment": "",
+        "dataType": "VARCHAR(100)",
+        "default": "",
+        "options": 0,
+        "ui": {
+          "keys": 0,
+          "widthName": 220,
+          "widthComment": 260,
+          "widthDataType": 200,
+          "widthDefault": 160
+        }
+      },
+      "c:workflow_logs:message": {
+        "id": "c:workflow_logs:message",
+        "tableId": "t:workflow_logs",
+        "name": "message",
+        "comment": "",
+        "dataType": "TEXT",
+        "default": "",
+        "options": 0,
+        "ui": {
+          "keys": 0,
+          "widthName": 220,
+          "widthComment": 260,
+          "widthDataType": 200,
+          "widthDefault": 160
+        }
+      },
+      "c:workflow_logs:timestamp": {
+        "id": "c:workflow_logs:timestamp",
+        "tableId": "t:workflow_logs",
+        "name": "timestamp",
+        "comment": "",
+        "dataType": "TIMESTAMP",
+        "default": "",
+        "options": 0,
+        "ui": {
+          "keys": 0,
+          "widthName": 220,
+          "widthComment": 260,
+          "widthDataType": 200,
+          "widthDefault": 160
+        }
+      }
+    },
+    "relationshipEntities": {
+      "r:workflows_company": {
+        "id": "r:workflows_company",
+        "identification": false,
+        "relationshipType": 16,
+        "startRelationshipType": 1,
+        "start": {
+          "tableId": "t:workflows",
+          "columnIds": [
+            "c:workflows:company_id"
+          ],
+          "x": 0,
+          "y": 0,
+          "direction": 2
+        },
+        "end": {
+          "tableId": "t:company",
+          "columnIds": [
+            "c:company:id"
+          ],
+          "x": 0,
+          "y": 0,
+          "direction": 1
+        }
+      },
+      "r:workflows_user": {
+        "id": "r:workflows_user",
+        "identification": false,
+        "relationshipType": 16,
+        "startRelationshipType": 1,
+        "start": {
+          "tableId": "t:workflows",
+          "columnIds": [
+            "c:workflows:user_id"
+          ],
+          "x": 0,
+          "y": 0,
+          "direction": 2
+        },
+        "end": {
+          "tableId": "t:app_user",
+          "columnIds": [
+            "c:app_user:id"
+          ],
+          "x": 0,
+          "y": 0,
+          "direction": 1
+        }
+      },
+      "r:workflows_status": {
+        "id": "r:workflows_status",
+        "identification": false,
+        "relationshipType": 16,
+        "startRelationshipType": 1,
+        "start": {
+          "tableId": "t:workflows",
+          "columnIds": [
+            "c:workflows:status_id"
+          ],
+          "x": 0,
+          "y": 0,
+          "direction": 2
+        },
+        "end": {
+          "tableId": "t:statuses",
+          "columnIds": [
+            "c:statuses:id"
+          ],
+          "x": 0,
+          "y": 0,
+          "direction": 1
+        }
+      },
+      "r:wfactors_workflows": {
+        "id": "r:wfactors_workflows",
+        "identification": false,
+        "relationshipType": 16,
+        "startRelationshipType": 1,
+        "start": {
+          "tableId": "t:workflows_factors",
+          "columnIds": [
+            "c:workflows_factors:workflow_id"
+          ],
+          "x": 0,
+          "y": 0,
+          "direction": 2
+        },
+        "end": {
+          "tableId": "t:workflows",
+          "columnIds": [
+            "c:workflows:id"
+          ],
+          "x": 0,
+          "y": 0,
+          "direction": 1
+        }
+      },
+      "r:wfactors_factors": {
+        "id": "r:wfactors_factors",
+        "identification": false,
+        "relationshipType": 16,
+        "startRelationshipType": 1,
+        "start": {
+          "tableId": "t:workflows_factors",
+          "columnIds": [
+            "c:workflows_factors:factor_id"
+          ],
+          "x": 0,
+          "y": 0,
+          "direction": 2
+        },
+        "end": {
+          "tableId": "t:factors",
+          "columnIds": [
+            "c:factors:id"
+          ],
+          "x": 0,
+          "y": 0,
+          "direction": 1
+        }
+      },
+      "r:ai_workflows": {
+        "id": "r:ai_workflows",
+        "identification": false,
+        "relationshipType": 16,
+        "startRelationshipType": 1,
+        "start": {
+          "tableId": "t:ai_result",
+          "columnIds": [
+            "c:ai_result:workflow_id"
+          ],
+          "x": 0,
+          "y": 0,
+          "direction": 2
+        },
+        "end": {
+          "tableId": "t:workflows",
+          "columnIds": [
+            "c:workflows:id"
+          ],
+          "x": 0,
+          "y": 0,
+          "direction": 1
+        }
+      },
+      "r:ai_factors": {
+        "id": "r:ai_factors",
+        "identification": false,
+        "relationshipType": 16,
+        "startRelationshipType": 1,
+        "start": {
+          "tableId": "t:ai_result",
+          "columnIds": [
+            "c:ai_result:factor_id"
+          ],
+          "x": 0,
+          "y": 0,
+          "direction": 2
+        },
+        "end": {
+          "tableId": "t:factors",
+          "columnIds": [
+            "c:factors:id"
+          ],
+          "x": 0,
+          "y": 0,
+          "direction": 1
+        }
+      },
+      "r:wcite_wfactors": {
+        "id": "r:wcite_wfactors",
+        "identification": false,
+        "relationshipType": 16,
+        "startRelationshipType": 1,
+        "start": {
+          "tableId": "t:workflow_citations",
+          "columnIds": [
+            "c:workflow_citations:workflow_factor_id"
+          ],
+          "x": 0,
+          "y": 0,
+          "direction": 2
+        },
+        "end": {
+          "tableId": "t:workflows_factors",
+          "columnIds": [
+            "c:workflows_factors:id"
+          ],
+          "x": 0,
+          "y": 0,
+          "direction": 1
+        }
+      },
+      "r:wcite_citations": {
+        "id": "r:wcite_citations",
+        "identification": false,
+        "relationshipType": 16,
+        "startRelationshipType": 1,
+        "start": {
+          "tableId": "t:workflow_citations",
+          "columnIds": [
+            "c:workflow_citations:citation_id"
+          ],
+          "x": 0,
+          "y": 0,
+          "direction": 2
+        },
+        "end": {
+          "tableId": "t:citations",
+          "columnIds": [
+            "c:citations:id"
+          ],
+          "x": 0,
+          "y": 0,
+          "direction": 1
+        }
+      },
+      "r:wlogs_workflows": {
+        "id": "r:wlogs_workflows",
+        "identification": false,
+        "relationshipType": 16,
+        "startRelationshipType": 1,
+        "start": {
+          "tableId": "t:workflow_logs",
+          "columnIds": [
+            "c:workflow_logs:workflow_id"
+          ],
+          "x": 0,
+          "y": 0,
+          "direction": 2
+        },
+        "end": {
+          "tableId": "t:workflows",
+          "columnIds": [
+            "c:workflows:id"
+          ],
+          "x": 0,
+          "y": 0,
+          "direction": 1
+        }
+      }
+    },
+    "indexEntities": {
+      "ix:uq_app_user_username": {
+        "id": "ix:uq_app_user_username",
+        "name": "uq_app_user_username",
+        "tableId": "t:app_user",
+        "indexColumnIds": [
+          "ixc:uq_app_user_username:0"
+        ],
+        "seqIndexColumnIds": [
+          "ixc:uq_app_user_username:0"
+        ],
+        "unique": true
+      },
+      "ix:uq_statuses_name": {
+        "id": "ix:uq_statuses_name",
+        "name": "uq_statuses_name",
+        "tableId": "t:statuses",
+        "indexColumnIds": [
+          "ixc:uq_statuses_name:0"
+        ],
+        "seqIndexColumnIds": [
+          "ixc:uq_statuses_name:0"
+        ],
+        "unique": true
+      },
+      "ix:uq_factors_name": {
+        "id": "ix:uq_factors_name",
+        "name": "uq_factors_name",
+        "tableId": "t:factors",
+        "indexColumnIds": [
+          "ixc:uq_factors_name:0"
+        ],
+        "seqIndexColumnIds": [
+          "ixc:uq_factors_name:0"
+        ],
+        "unique": true
+      },
+      "ix:uq_citations_url": {
+        "id": "ix:uq_citations_url",
+        "name": "uq_citations_url",
+        "tableId": "t:citations",
+        "indexColumnIds": [
+          "ixc:uq_citations_url:0"
+        ],
+        "seqIndexColumnIds": [
+          "ixc:uq_citations_url:0"
+        ],
+        "unique": true
+      },
+      "ix:idx_workflows_company_created": {
+        "id": "ix:idx_workflows_company_created",
+        "name": "idx_workflows_company_created",
+        "tableId": "t:workflows",
+        "indexColumnIds": [
+          "ixc:idx_workflows_company_created:0",
+          "ixc:idx_workflows_company_created:1"
+        ],
+        "seqIndexColumnIds": [
+          "ixc:idx_workflows_company_created:0",
+          "ixc:idx_workflows_company_created:1"
+        ],
+        "unique": false
+      },
+      "ix:idx_wfactors_workflow": {
+        "id": "ix:idx_wfactors_workflow",
+        "name": "idx_wfactors_workflow",
+        "tableId": "t:workflows_factors",
+        "indexColumnIds": [
+          "ixc:idx_wfactors_workflow:0"
+        ],
+        "seqIndexColumnIds": [
+          "ixc:idx_wfactors_workflow:0"
+        ],
+        "unique": false
+      },
+      "ix:idx_wlogs_workflow_ts": {
+        "id": "ix:idx_wlogs_workflow_ts",
+        "name": "idx_wlogs_workflow_ts",
+        "tableId": "t:workflow_logs",
+        "indexColumnIds": [
+          "ixc:idx_wlogs_workflow_ts:0",
+          "ixc:idx_wlogs_workflow_ts:1"
+        ],
+        "seqIndexColumnIds": [
+          "ixc:idx_wlogs_workflow_ts:0",
+          "ixc:idx_wlogs_workflow_ts:1"
+        ],
+        "unique": false
+      }
+    },
+    "indexColumnEntities": {
+      "ixc:uq_app_user_username:0": {
+        "id": "ixc:uq_app_user_username:0",
+        "indexId": "ix:uq_app_user_username",
+        "columnId": "c:app_user:username",
+        "orderType": 2
+      },
+      "ixc:uq_statuses_name:0": {
+        "id": "ixc:uq_statuses_name:0",
+        "indexId": "ix:uq_statuses_name",
+        "columnId": "c:statuses:name",
+        "orderType": 2
+      },
+      "ixc:uq_factors_name:0": {
+        "id": "ixc:uq_factors_name:0",
+        "indexId": "ix:uq_factors_name",
+        "columnId": "c:factors:name",
+        "orderType": 2
+      },
+      "ixc:uq_citations_url:0": {
+        "id": "ixc:uq_citations_url:0",
+        "indexId": "ix:uq_citations_url",
+        "columnId": "c:citations:url",
+        "orderType": 2
+      },
+      "ixc:idx_workflows_company_created:0": {
+        "id": "ixc:idx_workflows_company_created:0",
+        "indexId": "ix:idx_workflows_company_created",
+        "columnId": "c:workflows:company_id",
+        "orderType": 2
+      },
+      "ixc:idx_workflows_company_created:1": {
+        "id": "ixc:idx_workflows_company_created:1",
+        "indexId": "ix:idx_workflows_company_created",
+        "columnId": "c:workflows:created_at",
+        "orderType": 1
+      },
+      "ixc:idx_wfactors_workflow:0": {
+        "id": "ixc:idx_wfactors_workflow:0",
+        "indexId": "ix:idx_wfactors_workflow",
+        "columnId": "c:workflows_factors:workflow_id",
+        "orderType": 2
+      },
+      "ixc:idx_wlogs_workflow_ts:0": {
+        "id": "ixc:idx_wlogs_workflow_ts:0",
+        "indexId": "ix:idx_wlogs_workflow_ts",
+        "columnId": "c:workflow_logs:workflow_id",
+        "orderType": 2
+      },
+      "ixc:idx_wlogs_workflow_ts:1": {
+        "id": "ixc:idx_wlogs_workflow_ts:1",
+        "indexId": "ix:idx_wlogs_workflow_ts",
+        "columnId": "c:workflow_logs:timestamp",
+        "orderType": 1
+      }
+    },
+    "memoEntities": {}
+  }
+}
